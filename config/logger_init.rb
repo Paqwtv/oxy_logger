@@ -5,7 +5,7 @@ require '../lib/oxy_logger'
 OxyLogger.configure do |config|
 	# @param value [String] - путь куда сохранять логи
 	# @example
-	#  config.files_path = "/home/logs"
+	#  config.files_path = Rails.root + "/log/logged_data" #the same things in example 
   config.files_path = Rails.root.join('log', 'logged_data')
   # @note - сохранение логов локально в файл
   config.save_to_file = true
@@ -21,7 +21,7 @@ OxyLogger.configure do |config|
 	config.current_user = true
 	# @note - дата и время
 	config.date_time = true
-	# @note - вызываемый метод (экшн)
+	# @note - вызываемый метод (action)
 	config.called_method = true
 	# @note - вызываемый класс
 	config.class_name = true

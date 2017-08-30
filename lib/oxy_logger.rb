@@ -66,6 +66,13 @@ module OxyLogger
 		yield self		
 	end
 
+	# @note метод, возвращающий настройки всего приложения после инициализации
+	# @example
+	# 	OxyLogger.config_oxy_hash
+	# @return [Hash] 
+	# 	OxyLogger.config_oxy_hash => {:files_path=>"~/projects/logger", :save_to_file=>true,
+	# 	:save_to_db=>false, :incoming_params=>true, :output_params=>true, :processing_time=>true,
+	# 	:current_user=>true, :date_time=>true, :called_method=>true, :class_name=>true}
 	def self.config_oxy_hash
 		{
 			files_path: @@files_path,
