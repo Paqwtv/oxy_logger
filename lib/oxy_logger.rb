@@ -7,16 +7,10 @@ module OxyLogger
 		@@files_path = value
 	end
 
-	# @param bool [Boolean] - сохранение логов локально в файл
-		@@save_to_file
-	def self.save_to_file= bool
-		@@save_to_file = bool
-	end
-
-		@@save_to_db
-	# @param bool [Boolean] - сохранение логов в базу данных
-	def self.save_to_db= bool
-		@@save_to_db = bool
+	# @param value [String] - "file" or "db"
+		@@save_to_file_or_db
+	def self.save_to_file_or_db= value
+		@@save_to_file_or_db = value
 	end
 
 		@@incoming_params
@@ -70,14 +64,13 @@ module OxyLogger
 	# @example
 	# 	OxyLogger.config_oxy_hash
 	# @return [Hash] 
-	# 	OxyLogger.config_oxy_hash => {:files_path=>"~/projects/logger", :save_to_file=>true,
-	# 	:save_to_db=>false, :incoming_params=>true, :output_params=>true, :processing_time=>true,
+	# 	OxyLogger.config_oxy_hash => {:files_path=>"~/projects/logger", :save_to_file_or_db=>"file",
+	# 	:incoming_params=>true, :output_params=>true, :processing_time=>true,
 	# 	:current_user=>true, :date_time=>true, :called_method=>true, :class_name=>true}
 	def self.config_oxy_hash
 		{
 			files_path: @@files_path,
-			save_to_file: @@save_to_file,
-			save_to_db: @@save_to_db,
+			save_to_file_or_db: @@save_to_file_or_db,
 			incoming_params: @@incoming_params,
 			output_params: @@output_params,
 			processing_time: @@processing_time,

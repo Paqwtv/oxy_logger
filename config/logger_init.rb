@@ -7,10 +7,11 @@ OxyLogger.configure do |config|
 	# @example
 	#  config.files_path = Rails.root + "/log/logged_data" #the same things in example 
   config.files_path = Rails.root.join('log', 'logged_data')
-  # @note - сохранение логов локально в файл
-  config.save_to_file = true
-  # @note - сохранение логов в базу данных
-	config.save_to_db = false
+  # @note - сохранение логов локально в файл или в базу данных
+  # @param value [String] - "file" or "db"
+  # @example
+  #  config.save_to_file_of_db = "db"
+  config.save_to_file_or_db = "file"
 	# @note - входящие параметры
 	config.incoming_params = true
 	# @note - исходящие параметры
