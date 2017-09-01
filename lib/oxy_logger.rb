@@ -1,5 +1,5 @@
 require "oxy_logger/version"
-require_relative "oxy_logger/to_db"
+require_relative "oxy_logger/save_to_db"
 
 include OxyLogger::SaveToDb
 module MyLogger
