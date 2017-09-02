@@ -6,19 +6,10 @@ require "oxy_logger/version"
 Gem::Specification.new do |spec|
   spec.name          = "oxy_logger"
   spec.version       = OxyLogger::VERSION
-<<<<<<< HEAD
   spec.authors       = ["Dima, Vitalik, Vlad"]
   spec.email         = ["paqwtv@gmail.com"]
-
   spec.summary       = %q{Ruby gem}
   spec.description   = %q{Gem for logging data}
-=======
-  spec.authors       = ["Vetal, Vlad, Dima"]
-  spec.email         = ["paqwtv@gmail.com"]
-
-  spec.summary       = %q{Gem, wich advise you an ability to write loggs}
-  spec.description   = %q{Logger gem}
->>>>>>> origin/vlad_dev
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
