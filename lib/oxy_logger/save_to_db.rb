@@ -1,9 +1,13 @@
-require 'active_record'
 require 'rails'
+require 'active_record'
+
 
 module OxyLogger
-	module SaveToDb
-	ActiveRecord::Base.establish_connection(Rails.application.config.database_configuration[ENV['RAILS_ENV']])
+	class SaveToDb
+	#dbconfig = YAML.load_file(Rails.root.join('config', 'database.yml'))
+	#ActiveRecord::Base.establish_connection(dbconfig[Rails.env])	
+	# НЕ протестированная строчка кода.
+	ActiveRecord::Base.establish_connection(Rails.application.config.database_configuration[Rails.env])
 	
 class LogDb < ActiveRecord::Base
 end

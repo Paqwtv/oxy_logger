@@ -1,9 +1,8 @@
 require "oxy_logger/version"
 require_relative "oxy_logger/save_to_db"
 
-
 module OxyLogger
-	include OxyLogger::SaveToDb
+
   	@@files_path
 	# @param value [String] - путь куда сохранять логи
 	def self.files_path= value
