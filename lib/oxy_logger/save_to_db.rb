@@ -1,40 +1,10 @@
 require 'active_record'
-require 'sqlite3'
+require 'rails'
 
 module OxyLogger
 	module SaveToDb
-	ActiveRecord::Base.establish_connection(
-	  :adapter  => 'sqlite3',
-	  :database => '/home/hurum/projects/lesson_13/db/development.sqlite3',
-		:host => 'localhost')
-			# adapter: postgresql,
-			# encoding: unicode,
-			# database: hurum_db,
-			# pool: 2,
-			# username: postgres_hurum,
-			# password: 'password',
-			# host: localhost)
-			# если у вас не настроен postgresql
-			# :adapter => 'sqlite3',
-			# :database => '/db/development.sqlite3')
-			#ActiveRecord::Base.logger = Logger.new(STDERR) # ошибки работы БД
-
-# migration
-# ActiveRecord::Schema.class_eval do
-
-# create_table :log_dbs do |t|
-# t.text :user
-# t.text :run_time
-# t.text :class_name
-# t.text :date_time
-# t.text :method_name
-# t.text :result
-# t.text :params
-
-# t.timestamps
-# end
-# end
-
+	ActiveRecord::Base.establish_connection(Rails.application.config.database_configuration[ENV['RAILS_ENV']])
+	
 class LogDb < ActiveRecord::Base
 end
 
