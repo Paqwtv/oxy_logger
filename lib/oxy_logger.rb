@@ -1,6 +1,7 @@
 require "oxy_logger/version"
 
 module OxyLogger
+
   	@@files_path
 	# @param value [String] - путь куда сохранять логи
 	def self.files_path= value

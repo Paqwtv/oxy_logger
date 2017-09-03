@@ -6,11 +6,10 @@ require "oxy_logger/version"
 Gem::Specification.new do |spec|
   spec.name          = "oxy_logger"
   spec.version       = OxyLogger::VERSION
-  spec.authors       = ["Vetal, Vlad, Dima"]
+  spec.authors       = ["Dima, Vitalik, Vlad"]
   spec.email         = ["paqwtv@gmail.com"]
-
-  spec.summary       = %q{Gem, wich advise you an ability to write loggs}
-  spec.description   = %q{Logger gem}
+  spec.summary       = %q{Ruby gem}
+  spec.description   = %q{Gem for logging data}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
@@ -19,7 +18,7 @@ Gem::Specification.new do |spec|
   if spec.respond_to?(:metadata)
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
   else
-    raise "RubyGems 2.0 or newer is required to protect against " \
+    raise "RubyGems 2.0 or newer is required to protect against "
       "public gem pushes."
   end
 
