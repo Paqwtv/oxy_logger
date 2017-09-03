@@ -3,7 +3,7 @@ require 'active_record'
 
 
 module OxyLogger
-	class SaveToDb
+	module SaveToDb
 	#dbconfig = YAML.load_file(Rails.root.join('config', 'database.yml'))
 	#ActiveRecord::Base.establish_connection(dbconfig[Rails.env])	
 	# НЕ протестированная строчка кода.
