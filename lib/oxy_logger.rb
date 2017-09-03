@@ -1,5 +1,4 @@
 require "oxy_logger/version"
-require_relative "oxy_logger/save_to_db"
 
 module OxyLogger
 
