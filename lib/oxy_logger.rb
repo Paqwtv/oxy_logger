@@ -31,7 +31,7 @@ module OxyLogger
 			
 			puts first_data
 			# # записать лог
-			Writer.write first_data
+			OxyLogger::Writer.write first_data
 		end
 
 		def log_after method_name, *args
