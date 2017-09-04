@@ -52,4 +52,6 @@ OxyLogger.configure do |config|
 	config.called_method = true
 	# @note - вызываемый класс
 	config.class_name = true
+
+	config.rails_app = Rails.application
 end

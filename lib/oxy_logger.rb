@@ -92,6 +92,11 @@ module OxyLogger
  	def self.class_name= bool
  		@@class_name = bool
  	end
+	
+	@@rails_app
+ 	def self.rails_app= app
+ 		@@rails_app = app
+ 	end
 
 	# Конфигурирует сам себя
 	def self.configure
@@ -121,5 +126,4 @@ module OxyLogger
 	def self.path_to_log
 		@@files_path
 	end
-
 end
