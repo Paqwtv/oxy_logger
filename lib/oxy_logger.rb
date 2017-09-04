@@ -13,8 +13,7 @@ module OxyLogger
 	module Helper
 	  def log_befor method_name, *args
 			puts method_name
-			puts args.extract_options!#получение хеша
-
+			puts args.inspect
 			#     first_data = DataGetter.получить данные
 			#     data = Formatterend.format_data first_data
 			# # записать лог
