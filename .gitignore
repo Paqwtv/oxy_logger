@@ -7,7 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-/oxy_logger-0.1.0.gem
+/oxy_logger-*
 
 # rspec failure tracking
 .rspec_status
