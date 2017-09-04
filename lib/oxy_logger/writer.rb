@@ -1,5 +1,7 @@
 require 'rails'
 require 'active_record'
+require "formatter"
+require "log_record"
 
 module OxyLogger
 	module Writer
@@ -26,7 +28,6 @@ module OxyLogger
 
 		def save_to_db data	
 		   LogDb.create do |log|
-			log.user = data[:user]
 			log.run_time = data[:run_time]
 			log.class_name = data[:class_name]
 			log.date_time = data[:date_time]

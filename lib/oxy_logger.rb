@@ -1,4 +1,5 @@
 require "oxy_logger/version"
+require "oxy_logger/writer"
 
 module OxyLogger
 	module Sys
@@ -31,7 +32,6 @@ module OxyLogger
 			puts first_data
 			# # записать лог
 			Writer.write first_data
-
 		end
 
 		def log_after method_name, *args
