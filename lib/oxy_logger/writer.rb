@@ -11,8 +11,8 @@ module OxyLogger
 			record = OxyLogger::LogRecord.new data
 			puts ">> data #{record.inspect}"
 			record.save_to == :db ?
-				save_to_db   record.for_db :
-				save_to_file record.file_name, record.for_file
+				save_to_db(record.for_db) :
+				save_to_file(record.file_name, record.for_file)
 		end
 	
 	private 
