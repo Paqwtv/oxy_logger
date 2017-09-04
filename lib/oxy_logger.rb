@@ -12,12 +12,24 @@ module OxyLogger
 
 	module Helper
 	  def log_befor method_name, *args
-			puts method_name
-			puts args.inspect
-			#     first_data = DataGetter.получить данные
-			#     data = Formatterend.format_data first_data
+	  		first_data = {}
+	  		type = self.class.superclass.to_s
+	  		first_data[:start] = DateTime.now
+			first_data[:name] = method_name
+			first_data[:class_name] = self.class.name
+			type == "ApplicationRecord" ?
+				first_data[:type] = :model :
+				first_data[:type] = :controller
+			first_data[:params] = first_data[:type] == :model ?
+				first_data[:args] = args.inspect :
+				first_data[:args] = params
+			current_user.nil? ? 
+				first_data[:current_user] = current_user :
+				first_data[:current_user] = "#{current_user.id} <=> #{current_user.login}"
+
+			puts first_data
 			# # записать лог
-			#     Writer.write data
+			Writer.write first_data
 
 		end
 
@@ -101,7 +113,7 @@ module OxyLogger
 	def self.config_oxy_hash
 		{
 			files_path: @@files_path,
-			save_to_file_or_db: @@save_to_file_or_db,
+			save_to: @@save_to_file_or_db,
 			incoming_params: @@incoming_params,
 			output_params: @@output_params,
 			processing_time: @@processing_time,
@@ -110,6 +122,10 @@ module OxyLogger
 			called_method: @@called_method,
 			class_name: @@class_name
 		}
+	end
+
+	def self.path_to_log
+		@@files_path
 	end
 
 end

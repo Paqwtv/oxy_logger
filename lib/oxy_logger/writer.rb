@@ -3,9 +3,18 @@ require 'active_record'
 
 module OxyLogger
 	module Writer
-
-		def self.save_to_file text
-			File.open("text.txt" , "a") do  |f|
+		def write first_data
+			data   = Formatter.format_data first_data
+			record = LogRecord.new data
+			record.save_to == :db ?
+				save_to_db   record.for_db :
+				save_to_file record.file_name, record.for_file
+		end
+	
+	private 
+		def self.save_to_file file_name, text
+			path = [OxyLogger.path_to_log, file_name].join('/')
+			File.open(path, "a") do  |f|
 			    f.print("#{text}\n")
 		    end
 
