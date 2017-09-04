@@ -17,16 +17,20 @@ module OxyLogger
 	  		first_data[:start] = DateTime.now
 			first_data[:name] = method_name
 			first_data[:class_name] = self.class.name
-			type == "ApplicationRecord" ?
-				first_data[:type] = :model :
+			puts "1>>>>>>>>"
+			if type == "ApplicationRecord"
+				first_data[:type] = :model
+			else
 				first_data[:type] = :controller
+				# self.methods.include?(:current_user) ? 
+				# 	first_data[:current_user] = nil :
+				# 	first_data[:current_user] = "#{current_user.id} <=> #{current_user.login}"
+			end
+			puts "2>>>>>>>>"
 			first_data[:params] = first_data[:type] == :model ?
 				first_data[:args] = args.inspect :
 				first_data[:args] = params
-			current_user.nil? ? 
-				first_data[:current_user] = current_user :
-				first_data[:current_user] = "#{current_user.id} <=> #{current_user.login}"
-
+			
 			puts first_data
 			# # записать лог
 			Writer.write first_data
