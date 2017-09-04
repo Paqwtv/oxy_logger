@@ -11,7 +11,6 @@ require 'rake'
 namespace :oxy do
 	desc "Task for create migration file from rails"
 	task :db_create do
-	 
-		system 'rails g migration CreateLogger user:string run_time:datetime date_time:datetime class_name:string method_name:string result:string params:string'
+	 	system 'rails g migration CreateLogger user:string run_time:datetime date_time:datetime class_name:string method_name:string result:string params:string'
 	end
 end
