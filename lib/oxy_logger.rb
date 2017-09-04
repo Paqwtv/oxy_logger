@@ -22,9 +22,6 @@ module OxyLogger
 				first_data[:type] = :model
 			else
 				first_data[:type] = :controller
-				# self.methods.include?(:current_user) ? 
-				# 	first_data[:current_user] = nil :
-				# 	first_data[:current_user] = "#{current_user.id} <=> #{current_user.login}"
 			end
 			puts "2>>>>>>>>"
 			first_data[:params] = first_data[:type] == :model ?
@@ -107,7 +104,7 @@ module OxyLogger
 	# @return [Hash] 
 	# 	OxyLogger.config_oxy_hash => {:files_path=>"~/projects/logger", :save_to_file_or_db=>"file",
 	# 	:incoming_params=>true, :output_params=>true, :processing_time=>true,
-	# 	:current_user=>true, :date_time=>true, :called_method=>true, :class_name=>true}
+	# 	:date_time=>true, :called_method=>true, :class_name=>true}
 	def self.config_oxy_hash
 		{
 			files_path: @@files_path,
@@ -115,7 +112,6 @@ module OxyLogger
 			incoming_params: @@incoming_params,
 			output_params: @@output_params,
 			processing_time: @@processing_time,
-			current_user: @@current_user,
 			date_time: @@date_time,
 			called_method: @@called_method,
 			class_name: @@class_name
