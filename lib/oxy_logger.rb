@@ -78,12 +78,6 @@ module OxyLogger
 		@@processing_time = bool
 	end
 
-		@@current_user
-	# @param bool [Bollean] - текущий пользователь
-	def self.current_user= bool
-		@@current_user = bool
-	end
-
 	# @param bool [Bollean] - дата и время
 		@@date_time
 	def self.date_time= bool

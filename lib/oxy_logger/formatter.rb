@@ -1,7 +1,6 @@
 module OxyLogger
 	module Formatter
      	def self.format_data first_data
-     	  data[:user]			= first_data[:current_user]
 		  data[:run_time]		= first_data[:work_time]
 		  data[:date_time]		= first_data[:start]
 		  data[:class_name]		= first_data[:class_name]

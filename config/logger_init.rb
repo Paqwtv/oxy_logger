@@ -46,8 +46,6 @@ OxyLogger.configure do |config|
 	config.output_params = true
 	# @note - время обработки запроса
 	config.processing_time = true
-	# @note - текущий пользователь
-	config.current_user = true
 	# @note - дата и время
 	config.date_time = true
 	# @note - вызываемый метод (action)
