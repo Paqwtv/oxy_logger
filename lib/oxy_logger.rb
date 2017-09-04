@@ -1,6 +1,36 @@
 require "oxy_logger/version"
 
 module OxyLogger
+	module Sys
+		def logg_it my_names
+			my_names.each do |my_name|
+			method_hook( my_name, :before => :log_befor )
+			method_hook( my_name, :after => :log_after )
+		  end
+		end
+	end
+
+	module Helper
+	  def log_befor method_name, *args
+			puts method_name
+			puts args.inspect
+			#     first_data = DataGetter.получить данные
+			#     data = Formatterend.format_data first_data
+			# # записать лог
+			#     Writer.write data
+
+		end
+
+		def log_after method_name, *args
+			puts method_name
+			puts args.inspect
+			#     data = DataGetter.получить пост данные
+			#     data = Formatter.format_data first_data
+			# # записать лог
+			#     Writer.write data
+
+		end
+	end
 
   	@@files_path
 	# @param value [String] - путь куда сохранять логи
@@ -79,6 +109,7 @@ module OxyLogger
 			date_time: @@date_time,
 			called_method: @@called_method,
 			class_name: @@class_name
-		}		
+		}
 	end
+
 end
