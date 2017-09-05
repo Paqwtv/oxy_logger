@@ -26,3 +26,4 @@ require 'rake'
 		task :install => [:cfg_copy, :db_create, :migrate] do
 		end
 	end
+
