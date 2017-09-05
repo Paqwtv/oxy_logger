@@ -1,12 +1,12 @@
 require 'rails'
 require 'active_record'
-require "/home/hurum/projects/oxy_logger/lib/oxy_logger/formatter.rb"
-require "/home/hurum/projects/oxy_logger/lib/oxy_logger/log_record.rb"
+require_relative "formatter"
+require_relative "log_record"
 
 module OxyLogger
 	module Writer
 		def self.write first_data
-			data   = OxyLogger::Formatter.format_data first_data
+			data = OxyLogger::Formatter.format_data first_data
 			puts ">> data #{data}"
 			record = OxyLogger::LogRecord.new data
 			puts ">> data #{record.inspect}"
