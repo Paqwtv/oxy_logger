@@ -23,6 +23,6 @@ require 'rake'
 			system 'rails db:migrate'
 		end
 		desc 'install is a :db_create and :cfg_copy'
-		task :install => [:cfg_copy, :db_create, :migrate] do
+		task :install => [:db_create, :migrate, :cfg_copy] do
 		end
 	end
