@@ -1,10 +1,10 @@
   
 module OxyLogger
-	class LogRecord 
+  class LogRecord 
     def initialize data
       @data = data
     end
-		
+    
     def save_to
       @data[:save_to]
     end 
@@ -24,7 +24,7 @@ module OxyLogger
       for_db.map{|k, v| str += "#{k} :  #{v}"}
       str
     end
-		
-	end
+    
+  end
 end
 
