@@ -12,7 +12,7 @@ class Object
         # invoke before callback
         if options[:before].present?
           options[:before].is_a?(Proc) ? options[:before].call(method_name, self):
-            send(options[:before], method_name, *args) 
+            send(options[:before], method_name, *args)
         end
 
         # you can modify the code to call after callback
@@ -34,7 +34,8 @@ OxyLogger.configure do |config|
 	# @param value [String] - путь куда сохранять логи
 	# @example
 	#  config.files_path = Rails.root + "/log/logged_data" #the same things in example 
-  config.files_path = Rails.root.join('log', 'logged_data')
+  config.files_path = Rails.root.join('log')
+
   # @note - сохранение логов локально в файл или в базу данных
   # @param value [String] - "file" or "db"
   # @example

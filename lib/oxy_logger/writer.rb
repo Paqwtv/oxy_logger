@@ -6,9 +6,9 @@ require_relative "log_record"
 module OxyLogger
 	module Writer
 		def self.write first_data
-			data = OxyLogger::Formatter.format_data first_data
+			data = Formatter.format_data(first_data)
 			puts ">> data #{data}"
-			record = OxyLogger::LogRecord.new data
+			record = LogRecord.new(data)
 			puts ">> data #{record.inspect}"
 			record.save_to == :db ?
 				save_to_db(record.for_db) :
@@ -31,7 +31,7 @@ module OxyLogger
 			class LogDb < ActiveRecord::Base
 			end
 
-		def self.save_to_db data	
+		def self.save_to_db	data
 		   LogDb.create do |log|
 			log.run_time = data[:run_time]
 			log.class_name = data[:class_name]

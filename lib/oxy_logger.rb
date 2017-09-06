@@ -10,7 +10,8 @@ module OxyLogger
 		  end
 		end
 	end
-
+	# c=Card.new
+	# c.my "d"
 	module Helper
 	  def log_befor method_name, *args
 	  		first_data = {}
@@ -24,19 +25,21 @@ module OxyLogger
 			else
 				first_data[:type] = :controller
 			end
+			puts "First data is #{first_data}"
 			puts "2>>>>>>>>"
 			first_data[:params] = first_data[:type] == :model ?
-				first_data[:args] = args.inspect :
+				first_data[:args] = args :
 				first_data[:args] = params
+			puts ">>>>3"
 			
-			puts first_data
+			puts "First data is #{first_data}"
 			# # записать лог
-			OxyLogger::Writer.write first_data
+			OxyLogger::Writer.write(first_data)
 		end
 
 		def log_after method_name, *args
 			puts method_name
-			puts args.inspect
+			puts "ddddddd #{args.inspect}"
 			#     data = DataGetter.получить пост данные
 			#     data = Formatter.format_data first_data
 			# # записать лог
