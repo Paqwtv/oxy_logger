@@ -5,14 +5,14 @@ module OxyLogger
 	module Sys
 		def logg_it my_names
 			my_names.each do |my_name|
-			method_hook( my_name, :before => :log_befor )
+			method_hook( my_name, :before => :log_before )
 			method_hook( my_name, :after => :log_after )
 		  end
 		end
 	end
 
 	module Helper
-	  def log_befor method_name, *args
+	  def log_before method_name, *args
 	  		first_data = {}
 	  		type = self.class.superclass.to_s
 	  		first_data[:start] = DateTime.now
