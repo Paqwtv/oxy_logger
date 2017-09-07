@@ -2,7 +2,6 @@ require "oxy_logger/version"
 require "oxy_logger/writer"
 
 module OxyLogger
-<<<<<<< HEAD
 	module Sys
 		def logg_it my_names
 			my_names.each do |my_name|
@@ -20,18 +19,15 @@ module OxyLogger
 	  		first_data[:start] = DateTime.now
 			first_data[:name] = method_name
 			first_data[:class_name] = self.class.name
-			puts "1>>>>>>>>"
 			if type == "ApplicationRecord"
 				first_data[:type] = :model
 			else
 				first_data[:type] = :controller
 			end
 			puts "First data is #{first_data}"
-			puts "2>>>>>>>>"
 			first_data[:params] = first_data[:type] == :model ?
 				first_data[:args] = args :
 				first_data[:args] = params
-			puts ">>>>3"
 			
 			puts "First data is #{first_data}"
 			# # записать лог
@@ -45,48 +41,6 @@ module OxyLogger
 			#     data = Formatter.format_data first_data
 			# # записать лог
 			#     Writer.write data
-=======
-  module Sys
-    def logg_it my_names
-      my_names.each do |my_name|
-      method_hook( my_name, :before => :log_befor )
-      method_hook( my_name, :after => :log_after )
-      end
-    end
-  end
-
-  module Helper
-    def log_befor method_name, *args
-        first_data = {}
-        type = self.class.superclass.to_s
-        first_data[:start] = DateTime.now
-      first_data[:name] = method_name
-      first_data[:class_name] = self.class.name
-      puts "1>>>>>>>>"
-      if type == "ApplicationRecord"
-        first_data[:type] = :model
-      else
-        first_data[:type] = :controller
-      end
-      puts "2>>>>>>>>"
-      first_data[:params] = first_data[:type] == :model ?
-        first_data[:args] = args.inspect :
-        first_data[:args] = params
-      
-      puts first_data
-      # # записать лог
-      OxyLogger::Writer.write first_data
-    end
-
-    def log_after method_name, *args
-      puts method_name
-      puts args.inspect
-      #     data = DataGetter.получить пост данные
-      #     data = Formatter.format_data first_data
-      # # записать лог
-      #     Writer.write data
->>>>>>> cca95ab142885f4bf8974a5c251f9e2a5340ee7b
-
     end
   end
 
