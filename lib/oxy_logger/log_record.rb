@@ -1,4 +1,3 @@
-  
 module OxyLogger
   class LogRecord 
     def initialize data
@@ -19,10 +18,10 @@ module OxyLogger
 
     def for_file
       # parse template
-      str = "LogRecord for #{@data[:type]}"
+      str = "LogRecord for #{@data[:type]} "
       puts for_db.inspect
       for_db.map{|k, v| str += "#{k} :  #{v}"}
       str
-    end  
+    end
   end
 end

@@ -21,16 +21,15 @@ module OxyLogger
 
     def self.save_to_file file_name, text
     	Writer.check_path
-      path = [OxyLogger.path_to_log, file_name].join('/')			
+      path = [OxyLogger.path_to_log, file_name].join('/')
       File.open(path, "a") do  |f|
           f.print("#{text}\n")
         end
     end
-        ActiveRecord::Base.establish_connection( 
-            adapter: "sqlite3",
-             pool: "5",
-            timeout: "5000",
-            database: "db/development.sqlite3" )
+
+environment = ENV['RACK_ENV'] || 'development'
+dbconfig = YAML.load(File.read('config/database.yml'))
+ActiveRecord::Base.establish_connection(dbconfig[environment])
 
 	class LogDb < ActiveRecord::Base
 	end
