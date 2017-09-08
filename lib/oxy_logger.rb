@@ -41,9 +41,9 @@ module OxyLogger
   end
 
   # @param value [String] - "file" or "db"
-    @@save_to_file_or_db
-  def self.save_to_file_or_db= value
-    @@save_to_file_or_db = value
+    @@save_to
+  def self.save_to= value
+    @@save_to = value
   end
 
     @@incoming_params
