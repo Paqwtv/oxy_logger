@@ -23,7 +23,6 @@ module OxyLogger
       puts for_db.inspect
       for_db.map{|k, v| str += "#{k} :  #{v}"}
       str
-    end
-    
+    end  
   end
 end

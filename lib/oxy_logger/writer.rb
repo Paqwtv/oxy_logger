@@ -13,8 +13,15 @@ module OxyLogger
 				save_to_file(record.file_name, record.for_file)
 		end
 
+		def self.check_path
+      if OxyLogger.path_to_log.exist? == false
+      Dir.mkdir(OxyLogger.path_to_log)
+      end
+    end
+
     def self.save_to_file file_name, text
-      path = [OxyLogger.path_to_log, file_name].join('/')
+    	Writer.check_path
+      path = [OxyLogger.path_to_log, file_name].join('/')			
       File.open(path, "a") do  |f|
           f.print("#{text}\n")
         end

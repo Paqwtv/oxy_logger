@@ -102,7 +102,7 @@ module OxyLogger
   def self.config_oxy_hash
     {
       files_path: @@files_path,
-      save_to: @@save_to_file_or_db,
+      save_to: @@save_to,
       incoming_params: @@incoming_params,
       output_params: @@output_params,
       processing_time: @@processing_time,
