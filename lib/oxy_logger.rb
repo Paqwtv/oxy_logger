@@ -10,37 +10,27 @@ module OxyLogger
 		  end
 		end
 	end
-	# c=Card.new
-	# c.my "d"
-	module Helper
-	  def log_befor method_name, *args
-	  		first_data = {}
-	  		type = self.class.superclass.to_s
-	  		first_data[:start] = DateTime.now
-			first_data[:name] = method_name
-			first_data[:class_name] = self.class.name
-			if type == "ApplicationRecord"
-				first_data[:type] = :model
-			else
-				first_data[:type] = :controller
-			end
-			puts "First data is #{first_data}"
-			first_data[:params] = first_data[:type] == :model ?
-				first_data[:args] = args :
-				first_data[:args] = params
-			
-			puts "First data is #{first_data}"
-			# # записать лог
-			OxyLogger::Writer.write(first_data)
-		end
 
-		def log_after method_name, *args
-			puts method_name
-			puts "ddddddd #{args.inspect}"
-			#     data = DataGetter.получить пост данные
-			#     data = Formatter.format_data first_data
-			# # записать лог
-			#     Writer.write data
+  module Helper
+    def log_befor method_name, *args
+      first_data = {}
+      type = self.class.superclass.to_s
+      first_data[:start] = DateTime.now
+      first_data[:name] = method_name
+      first_data[:class_name] = self.class.name
+        if type == "ApplicationRecord"
+        first_data[:type] = :model
+        else
+        first_data[:type] = :controller
+        end
+      first_data[:params] = first_data[:type] == :model ?
+      first_data[:args] = args :
+      first_data[:args] = params
+      Writer.write(first_data)
+    end
+
+    def log_after method_name, *args
+
     end
   end
 

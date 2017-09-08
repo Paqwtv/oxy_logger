@@ -27,4 +27,3 @@ module OxyLogger
     
   end
 end
-
