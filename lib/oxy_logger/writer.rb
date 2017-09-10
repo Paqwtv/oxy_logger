@@ -17,9 +17,12 @@ module OxyLogger
 
 		def self.save_to_file file_name, text
 			path = [OxyLogger.path_to_log, file_name].join('/')
+<<<<<<< HEAD
 			if Dir.glob(OxyLogger.path_to_log, File::FNM_CASEFOLD) == false #check for existing dir, if dir isn't exists, it will be created
 			Dir.mkdir(OxyLogger.path_to_log)
 			end
+=======
+>>>>>>> master
 			File.open(path, "a") do  |f|
 			    f.print("#{text}\n")
 		    end

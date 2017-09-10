@@ -17,6 +17,7 @@ require 'rake'
 		desc "Task for create migration file from rails"
 		task :db_create do
 			system 'rails generate migration CreateLogger user:string run_time:datetime date_time:datetime class_name:string method_name:string result:string params:string'
+
 		end	
 		desc "Task for accept migration to db "
 		task :migrate do

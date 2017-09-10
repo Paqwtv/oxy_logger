@@ -12,7 +12,7 @@ module OxyLogger
 	end
 
 	module Helper
-	  def log_before method_name, *args
+ 	  def log_before method_name, *args
 	  		first_data = {}
 	  		type = self.class.superclass.to_s
 	  		first_data[:start] = DateTime.now
