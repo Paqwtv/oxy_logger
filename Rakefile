@@ -1,7 +1,5 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
-import "lib/tasks/cfg_copy.rake"
-import "lib/tasks/db_create.rake"
 
 RSpec::Core::RakeTask.new(:spec)
 

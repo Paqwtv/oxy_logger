@@ -22,6 +22,7 @@ module OxyLogger
     def self.save_to_file file_name, text
     	Writer.check_path
       path = [OxyLogger.path_to_log, file_name].join('/')
+      
       File.open(path, "a") do  |f|
           f.print("#{text}\n")
         end

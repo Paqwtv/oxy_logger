@@ -82,7 +82,7 @@ module OxyLogger
      @@class_name = bool
    end
   
-  @@rails_app
+    @@rails_app
    def self.rails_app= app
      @@rails_app = app
    end

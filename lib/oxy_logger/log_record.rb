@@ -1,5 +1,6 @@
+require "mustache"
 module OxyLogger
-  class LogRecord 
+  class LogRecord
     def initialize data
       @data = data
     end
@@ -17,11 +18,12 @@ module OxyLogger
     end
 
     def for_file
-      # parse template
-      str = "LogRecord for #{@data[:type]} "
-      puts for_db.inspect
-      for_db.map{|k, v| str += "#{k} :  #{v}"}
+      template_data = OxyLogger.config_oxy_hash.merge!(@data)
+      Mustache.template_file = "#{__dir__}/template.mustache"
+      str = Mustache.render(template_data)
       str
     end
+
   end
 end
+
