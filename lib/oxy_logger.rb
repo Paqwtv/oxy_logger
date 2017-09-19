@@ -46,48 +46,16 @@ module OxyLogger
     @@save_to = value
   end
 
-    @@incoming_params
-  # @param bool [Bollean] - входящие параметры
-  def self.incoming_params= bool
-    @@incoming_params = bool
+    @@logget_fields
+  def logget_fields= value
+    @@logget_fields = value    
   end
 
-    @@output_params
-  # @param bool [Bollean] - исходящие параметры
-  def self.output_params= bool
-    @@output_params = bool
+  def self.path_to_log
+    @@files_path
   end
 
-    @@processing_time
-  # @param bool [Bollean] - время обработки запроса
-  def self.processing_time= bool
-    @@processing_time = bool
-  end
-
-  # @param bool [Bollean] - дата и время
-    @@date_time
-  def self.date_time= bool
-    @@date_time = bool
-  end
-
-  # @param bool [Bollean] - вызываемый метод (экшн)
-     @@called_method
-  def self.called_method= bool
-    @@called_method = bool
-  end
-
-  # @param bool [Bollean] - вызываемый класс
-     @@class_name
-   def self.class_name= bool
-     @@class_name = bool
-   end
-  
-    @@rails_app
-   def self.rails_app= app
-     @@rails_app = app
-   end
-
-  # Конфигурирует сам себя
+   # Конфигурирует сам себя
   def self.configure
     yield self    
   end
@@ -103,16 +71,7 @@ module OxyLogger
     {
       files_path: @@files_path,
       save_to: @@save_to,
-      incoming_params: @@incoming_params,
-      output_params: @@output_params,
-      processing_time: @@processing_time,
-      date_time: @@date_time,
-      called_method: @@called_method,
-      class_name: @@class_name
+      logget_fields: @@logget_fields
     }
-  end
-
-  def self.path_to_log
-    @@files_path
   end
 end

@@ -29,6 +29,9 @@ class Object
   end
 end
 
+  extend OxyLogger::Sys
+  include OxyLogger::Helper
+
 # Default configure Logger GEM
 OxyLogger.configure do |config|
   # @param value [String] - путь куда сохранять логи
@@ -40,18 +43,12 @@ OxyLogger.configure do |config|
   # @example
   #  config.save_to = "db"
   config.save_to = "file"
-  # @note - входящие параметры
-  config.incoming_params = true
-  # @note - исходящие параметры
-  config.output_params = true
-  # @note - время обработки запроса
-  config.processing_time = true
-  # @note - дата и время
-  config.date_time = true
-  # @note - вызываемый метод (action)
-  config.called_method = true
-  # @note - вызываемый класс
-  config.class_name = true
-
-  config.rails_app = Rails.application
+  # @note - логируемые параметры
+  config.logget_fields = [
+      run_time,
+      date_time,
+      class_name,
+      method_name,
+      result,
+      params]
   end

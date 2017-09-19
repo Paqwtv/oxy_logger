@@ -18,9 +18,9 @@ module OxyLogger
     end
 
     def for_file
-      template_data = OxyLogger.config_oxy_hash.merge!(@data)
+      text = @data.slice(OxyLogger.logget_fields) + @data(:type)
       Mustache.template_file = "#{__dir__}/template.mustache"
-      str = Mustache.render(template_data)
+      str = Mustache.render(@data)
       str
     end
 

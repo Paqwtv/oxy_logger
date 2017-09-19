@@ -5,6 +5,13 @@ require_relative "log_record"
 
 module OxyLogger
 	module Writer
+
+	environment = ENV['RACK_ENV'] || 'development'
+	dbconfig = YAML.load(File.read('config/database.yml'))
+	ActiveRecord::Base.establish_connection(dbconfig[environment])
+
+	class LogDb < ActiveRecord::Base end
+
 		def self.write first_data
 			data = Formatter.format_data(first_data)
 			record = LogRecord.new(data)
@@ -27,13 +34,6 @@ module OxyLogger
           f.print("#{text}\n")
         end
     end
-
-environment = ENV['RACK_ENV'] || 'development'
-dbconfig = YAML.load(File.read('config/database.yml'))
-ActiveRecord::Base.establish_connection(dbconfig[environment])
-
-	class LogDb < ActiveRecord::Base
-	end
 
 		def self.save_to_db	data
 			LogDb.create do |log|
