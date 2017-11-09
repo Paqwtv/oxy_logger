@@ -45,10 +45,10 @@ OxyLogger.configure do |config|
   config.save_to = "file"
   # @note - логируемые параметры
   config.logget_fields = [
-      run_time,
-      date_time,
-      class_name,
-      method_name,
-      result,
-      params]
+      :run_time,
+      :date_time,
+      :class_name,
+      :method_name,
+      :result,
+      :params]
   end

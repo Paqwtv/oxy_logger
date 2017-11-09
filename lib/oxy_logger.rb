@@ -2,17 +2,17 @@ require "oxy_logger/version"
 require "oxy_logger/writer"
 
 module OxyLogger
-	module Sys
-		def logg_it my_names
-			my_names.each do |my_name|
-			method_hook( my_name, :before => :log_befor )
-			method_hook( my_name, :after => :log_after )
-		  end
-		end
-	end
+  module Sys
+    def logg_it(my_names)
+      my_names.each do |my_name|
+        method_hook( my_name, before: :log_befor )
+        method_hook( my_name, after: :log_after )
+      end
+    end
+  end
 
   module Helper
-    def log_befor method_name, *args
+    def log_befor(method_name, *args)
       first_data = {}
       type = self.class.superclass.to_s
       first_data[:start] = DateTime.now
@@ -29,33 +29,35 @@ module OxyLogger
       Writer.write(first_data)
     end
 
-    def log_after method_name, *args
-
-    end
+    def log_after(method_name, *args); end
   end
 
     @@files_path
   # @param value [String] - путь куда сохранять логи
-  def self.files_path= value
+  def self.files_path=(value)
     @@files_path = value
   end
 
   # @param value [String] - "file" or "db"
     @@save_to
-  def self.save_to= value
+  def self.save_to=(value)
     @@save_to = value
   end
 
     @@logget_fields
-  def logget_fields= value
+  def self.logget_fields=(value)
     @@logget_fields = value    
+  end
+
+  def self.logget_data
+    @@logget_fields
   end
 
   def self.path_to_log
     @@files_path
   end
 
-   # Конфигурирует сам себя
+  # Конфигурирует сам себя
   def self.configure
     yield self    
   end
