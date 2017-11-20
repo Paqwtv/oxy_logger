@@ -48,7 +48,7 @@ IMPORTANT! The method `log_it` must be at the end of the logged methods.
   logg_it [ :index, :show, :new, :edit, :create, :update, :destroy ] # Select any of the available methods
 ```
 
-Very simple is not it?
+Very simple isn't?
 
 ## Configuration
 
