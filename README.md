@@ -1,28 +1,50 @@
 # OxyLogger
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oxy_logger`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to our Rails logger gem!
+  
+In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oxy_logger`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'oxy_logger'
+gem "oxy_logger", '~> 0.3.0'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install oxy_logger
+Then run 
+    
+    $ bundle install
 
 ## Usage
 
-TODO: Write usage instructions here
+To include gem tasks inside your rails app.
+Add this code to rails `Rakefile`:
+
+```ruby
+spec = Gem::Specification.find_by_name 'oxy_logger'
+load '#{spec.gem_dir}/lib/tasks/logger_install.rake'
+```
+
+Then run the rake task.
+This command will create a configuration file in your application and run the `migration` to update your database.
+
+    $ rake oxy:install
+
+## Controller or Model logging
+
+In order to log the controller methods, add in `app/controllers/application_controller.rb`
+Do the same code for the Model, if you need to log it `app/models/application_record.rb`
+
+```ruby
+extend OxyLogger::Sys
+include OxyLogger::Helper
+```
+
+And at the end, specify what methods you want to use for logging.
+```ruby
+logg_it [ :save, :create, :show, :destroy, :update, :new, :index ]
+```
 
 ## Development
 
