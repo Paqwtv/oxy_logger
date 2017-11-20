@@ -29,26 +29,24 @@ class Object
   end
 end
 
-  extend OxyLogger::Sys
-  include OxyLogger::Helper
-
 # Default configure Logger GEM
 OxyLogger.configure do |config|
-  # @param value [String] - путь куда сохранять логи
-  # @example
-  #  config.files_path = Rails.root + "/log/logged_data" #the same things in example 
-  config.files_path = Rails.root.join('log', 'logged_data')
-  # @note - сохранение логов локально в файл или в базу данных
+  # @note - Save logs locally to a file or database
   # @param value [String] - "file" or "db"
   # @example
   #  config.save_to = "db"
-  config.save_to = "file"
-  # @note - логируемые параметры
-  config.logget_fields = [
-      :run_time,
-      :date_time,
-      :class_name,
-      :method_name,
-      :result,
-      :params]
-  end
+  config.save_to = 'file'
+  # @param value [String] - way to save logs
+  # @example
+  #  config.files_path = Rails.root + "/log/logged_data" #the same things in example 
+  config.files_path = Rails.root.join('log', 'logged_data')
+  # @note - logged parameters
+  config.logget_fields = %i[
+    run_time
+    date_time
+    class_name
+    method_name
+    result
+    params
+  ]
+end

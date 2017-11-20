@@ -1,19 +1,19 @@
 # OxyLogger
 
 Welcome to our Rails logger gem!
-  
-In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oxy_logger`. To experiment with that code, run `bin/console` for an interactive prompt.
+
+This is a simple logger that is easy to use and can be configured as you want.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "oxy_logger", '~> 0.3.0'
+  gem 'oxy_logger', '~> 0.3.0'
 ```
 
-Then run 
-    
+Then run:
+
     $ bundle install
 
 ## Usage
@@ -22,8 +22,8 @@ To include gem tasks inside your rails app.
 Add this code to rails `Rakefile`:
 
 ```ruby
-spec = Gem::Specification.find_by_name 'oxy_logger'
-load '#{spec.gem_dir}/lib/tasks/logger_install.rake'
+  spec = Gem::Specification.find_by_name 'oxy_logger'
+  load "#{spec.gem_dir}/lib/tasks/logger_install.rake"
 ```
 
 Then run the rake task.
@@ -37,24 +37,56 @@ In order to log the controller methods, add in `app/controllers/application_cont
 Do the same code for the Model, if you need to log it `app/models/application_record.rb`
 
 ```ruby
-extend OxyLogger::Sys
-include OxyLogger::Helper
+  extend OxyLogger::Sys
+  include OxyLogger::Helper
 ```
 
 And at the end, specify what methods you want to use for logging.
+IMPORTANT! The method `log_it` must be at the end of the logged methods.
+
 ```ruby
-logg_it [ :save, :create, :show, :destroy, :update, :new, :index ]
+  logg_it [ :index, :show, :new, :edit, :create, :update, :destroy ] # Select any of the available methods
 ```
 
-## Development
+Very simple is not it?
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Configuration
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+When you launched the rake task a configuration file was copied into your project, which you can find at `/config/initializers/logger_init.rb`
+
+```ruby
+OxyLogger.configure do |config|
+  # Save logs locally to a file or database
+  config.save_to = "file"  # or config.save_to = "db"
+```
+
+If you want to log to a file, you can specify the path to it.
+If this file does not exist, the **OxyLogger** will create it.
+
+```ruby
+  #  config.files_path = Rails.root + "/log/logged_data" # the same things in example 
+  config.files_path = Rails.root.join('log', 'logged_data')
+```
+
+You can choose which parameters you want to record.
+Unnecessary parameter just comment out or delete.
+
+```ruby
+  config.logget_fields = %i[
+    run_time          # time of request processing
+    date_time         # called time
+    class_name        # class in which was called
+    method_name       # method in which was called
+    result            # return result
+    params            # parameters
+  ]
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/oxy_logger.
+We will be very happy if our product interests you and you will have an irresistible desire to help us with its development.
+
+https://github.com/[USERNAME]/oxy_logger.
 
 ## License
 
