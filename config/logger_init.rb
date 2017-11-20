@@ -42,11 +42,11 @@ OxyLogger.configure do |config|
   config.files_path = Rails.root.join('log', 'logged_data')
   # @note - logged parameters
   config.logget_fields = %i[
-    run_time
     date_time
     class_name
     method_name
     result
     params
   ]
+  # TODO add 'run_time' parametrs
 end

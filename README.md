@@ -73,7 +73,6 @@ Unnecessary parameter just comment out or delete.
 
 ```ruby
   config.logget_fields = %i[
-    run_time          # time of request processing
     date_time         # called time
     class_name        # class in which was called
     method_name       # method in which was called
